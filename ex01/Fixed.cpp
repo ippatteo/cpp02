@@ -1,6 +1,6 @@
 #include "Fixed.hpp"
 
-Fixed::Fixed()
+Fixed::Fixed() : _fixed(0)
 {
     std::cout << "Default constructor called" << std::endl;
 }
@@ -49,23 +49,22 @@ Fixed::Fixed(const int intVal)
 Fixed::Fixed(const float floVal)
 {
     std::cout << "Float constructor called" << std::endl;
-    float copy;
-    this->_fixed = roundf(floVal * (1 << this->_bits)) ;
+    this->_fixed = roundf(floVal * (1 << this->_bits)) ; //float = 1/256 * x
 }
 
 float Fixed::toFloat(void) const
 {
-	return float(this->_fixed) / (1 << this->_bits);
+	return float(this->_fixed) / (1 << this->_bits); //inversa di floval
 }
 
 int Fixed::toInt(void) const
 {
-	return this->_fixed >> this->_bits;
+	return this->_fixed >> this->_bits; //shifta di 8 bits e ba, cosi i bit si trovano in pos
 }
 
 std::ostream &operator<<(std::ostream &os, const Fixed &obj)
 {
-	os << obj.toFloat();
+	os << obj.toFloat(); //converto in float e immetto nello stream
 	return os;
 }
 

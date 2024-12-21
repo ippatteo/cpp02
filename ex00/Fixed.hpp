@@ -1,5 +1,5 @@
-#ifndef FIXED.HPP
-# define FIXED.HPP
+#ifndef FIXED_HPP
+# define FIXED_HPP
 
 #include <cmath>
 #include <iostream>
@@ -11,13 +11,13 @@ class Fixed
 {
     private:
     int _fixed;
-    static const int _bits = 8;
+    static const int _bits;
 
     public:
-    Fixed();
-    ~Fixed();
-    Fixed(const Fixed &inst);
-    Fixed& operator=(const Fixed &inst);
+    Fixed(); //default const
+    ~Fixed();//destruct
+    Fixed(const Fixed &inst);//copy const
+    Fixed& operator=(const Fixed &inst); //copy assignemnt oper
     int getRawBits(void) const;
     void setRawBits(int val);
 };
